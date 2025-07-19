@@ -28,6 +28,15 @@ sh sample.sh
 5. Train the downstream model.  
    This project doesn't include the code for training the downstream model.  
    You can refer to the code of other SOTA methods by putting the distilled dataset under their output path.  
-   
-   
+
+## Citation
+If you find this paper useful for your research, please use the following BibTeX entry.
+```
+@inproceedings{li2025diff,
+  title={Task-Specific Generative Dataset Distillation with Difficulty-Guided Sampling}, 
+  author={Li, Mingzhuo and Li, Guang and Mao, Jiafeng and Ye, Linfeng and Ogawa, Takahiro and Haseyama, Miki},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV) Workshops},
+  year={2025}
+}
+```
 
