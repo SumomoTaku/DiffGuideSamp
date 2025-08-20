@@ -126,13 +126,20 @@ def main(args):
         ip_meta_path = cls_path.joinpath("metadata.jsonl")
 
         # fetch threshold values if stored
-        df = pd.read_json(args.th_file, lines=True)
-        res = df.loc[(df['set'] == ip_path.name) & (df['cls'] == cls)]
-        if len(res) == 0:
-            th_b, th_t = get_threshold(ip_meta_path, size=args.ipc, ip_name=ip_path.name, cls=cls, save_file=args.th_file)
+        th_path = Path(args.th_file)
+        if th_path.is_file() and th_path.stat().st_size > 0:
+            df = pd.read_json(args.th_file, lines=True)
+            res = df.loc[(df['set'] == ip_path.name) & (df['cls'] == cls)]
+            if len(res) > 0:
+                th_b, th_t = res.iloc[0]["b"], res.iloc[0]["t"]
+            else:
+                th_b, th_t = get_threshold(ip_meta_path, size=args.ipc, ip_name=ip_path.name, cls=cls,
+                                           save_file=args.th_file)
         else:
-            th_b, th_t = res.iloc[0]["b"], res.iloc[0]["t"]
+            th_b, th_t = get_threshold(ip_meta_path, size=args.ipc, ip_name=ip_path.name, cls=cls, save_file=args.th_file)
+
         print(f"use bottom_threshold={th_b}, top_threshold={th_t} for class {cls}")
+        exit()
 
         df = pd.read_json(ori_path.joinpath(cls, "metadata.jsonl"), lines=True)
         ori_distr = log_transform(list(df["score"]), th_b=th_b, th_t=th_t)
