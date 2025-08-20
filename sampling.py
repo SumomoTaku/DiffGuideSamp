@@ -139,7 +139,6 @@ def main(args):
             th_b, th_t = get_threshold(ip_meta_path, size=args.ipc, ip_name=ip_path.name, cls=cls, save_file=args.th_file)
 
         print(f"use bottom_threshold={th_b}, top_threshold={th_t} for class {cls}")
-        exit()
 
         df = pd.read_json(ori_path.joinpath(cls, "metadata.jsonl"), lines=True)
         ori_distr = log_transform(list(df["score"]), th_b=th_b, th_t=th_t)
