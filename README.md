@@ -1,6 +1,6 @@
 # Task-Specific Generative Dataset Distillation with Difficulty-Guided Sampling
-The code used in the following ICCV 2025 Workshop paper:  
-[Task-Specific Generative Dataset Distillation with Difficulty-Guided Sampling](https://arxiv.org/abs/2507.03331)
+The code used in the following paper:  
+[Task-Specific Generative Dataset Distillation with Difficulty-Guided Sampling](https://arxiv.org/abs/2507.03331) [(ICCVW 2025)](https://iccv.thecvf.com/Conferences/2025)
 
 
 ## How to Use
